@@ -1,8 +1,8 @@
-import { CoinService } from './../../coin.service';
+import { CustomerService } from '../../customer.service';
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import { Coin } from '../../Coin';
+import { Customer } from '../../Customer';
 
 @Component({
   selector: 'app-index',
@@ -11,23 +11,28 @@ import { Coin } from '../../Coin';
 })
 export class IndexComponent implements OnInit {
 
-  coins: any;
+  customers: any;
 
-  constructor(private http: HttpClient, private service: CoinService) {}
+  constructor(private http: HttpClient, private service: CustomerService) {}
 
   ngOnInit() {
-    this.getCoins();
+    this.getCustomers();
   }
 
-  getCoins() {
-    this.service.getCoins().subscribe(res => {
-      this.coins = res;
+  getCustomers() {
+    this.service.getCustomers().subscribe(res => {
+      this.customers = res;
     });
   }
 
-  deleteCoin(id) {
-    this.service.deleteCoin(id).subscribe(res => {
-      console.log('Deleted');
+  deleteCustomer(id) {
+    this.service.deleteCustomer(id).subscribe(res => {
+      const index = this.customers.findIndex(function (value, i, obj) {
+        return value.id === id;
+      });
+      if (index !== -1) {
+        this.customers.splice(index, 1);
+      }
     });
   }
 }

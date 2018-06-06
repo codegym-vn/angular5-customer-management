@@ -3,18 +3,19 @@ import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
+import {Customer} from "./Customer";
 
 @Injectable()
-export class CoinService {
+export class CustomerService {
 
   result: any;
   constructor(private http: HttpClient) {}
 
-  addCoin(name, price) {
-    const uri = 'http://localhost:4000/coins/add';
+  addCustomer(firstName, lastName) {
+    const uri = 'http://localhost:8080/customers';
     const obj = {
-      name: name,
-      price: price
+      firstName: firstName,
+      lastName: lastName
     };
     this
       .http
@@ -23,8 +24,8 @@ export class CoinService {
           console.log('Done'));
   }
 
-  getCoins() {
-    const uri = 'http://localhost:4000/coins';
+  getCustomers() {
+    const uri = 'http://localhost:8080/customers';
     return this
             .http
             .get(uri)
@@ -33,8 +34,8 @@ export class CoinService {
             });
   }
 
-  editCoin(id) {
-    const uri = 'http://localhost:4000/coins/edit/' + id;
+  editCustomer(id) {
+    const uri = 'http://localhost:8080/customers/' + id;
     return this
             .http
             .get(uri)
@@ -43,25 +44,25 @@ export class CoinService {
             });
   }
 
-  updateCoin(name, price, id) {
-    const uri = 'http://localhost:4000/coins/update/' + id;
+  updateCustomer(firstName, lastName, id) {
+    const uri = 'http://localhost:8080/customers/' + id;
 
     const obj = {
-      name: name,
-      price: price
+      firstName: firstName,
+      lastName: lastName
     };
     this
       .http
-      .post(uri, obj)
+      .put(uri, obj)
       .subscribe(res => console.log('Done'));
   }
 
-  deleteCoin(id) {
-    const uri = 'http://localhost:4000/coins/delete/' + id;
+  deleteCustomer(id) {
+    const uri = 'http://localhost:8080/customers/' + id;
 
         return this
             .http
-            .get(uri)
+            .delete(uri)
             .map(res => {
               return res;
             });

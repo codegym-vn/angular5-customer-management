@@ -10,7 +10,7 @@ import { CreateComponent } from './components/create/create.component';
 import { EditComponent } from './components/edit/edit.component';
 import { appRoutes } from './routerConfig';
 
-import { CoinService } from './coin.service';
+import { CustomerService } from './customer.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +22,7 @@ import { CoinService } from './coin.service';
   imports: [
     BrowserModule, RouterModule.forRoot(appRoutes), HttpClientModule, ReactiveFormsModule
   ],
-  providers: [CoinService],
+  providers: [CustomerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
