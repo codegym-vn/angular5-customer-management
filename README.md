@@ -1,6 +1,7 @@
 # Ng5crud
 #
 Mã nguồn Ng5crud được sử dụng để thực hành tại [CodeGym](https://codegym.vn)
+#
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.5.
 
 ## Development server
