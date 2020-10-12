@@ -1,4 +1,4 @@
-# Ng5crud
+# Angular5 Customer Management
 #
 Mã nguồn Ng5crud được sử dụng để thực hành tại [CodeGym](https://codegym.vn).
 #
